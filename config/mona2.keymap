@@ -173,3 +173,5 @@
         };
     };
 };
+
+&msc { acceleration-exponent = <0>; time-to-max-speed-ms = <0>; delay-ms = <0>; };
