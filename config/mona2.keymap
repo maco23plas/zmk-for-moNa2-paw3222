@@ -91,9 +91,9 @@
         scroll_up_down: mouse_wheel_up_down {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+            bindings = <&msc MOVE_Y(-60)>, <&msc MOVE_Y(60)>;
 
-            tap-ms = <150>;
+            tap-ms = <40>;
         };
     };
 
@@ -120,7 +120,7 @@
 &trans        &trans        &trans        &trans        &trans   &trans      &kp RIGHT_SHIFT  &kp RIGHT_SHIFT                                &trans
             >;
 
-            sensor-bindings = <&scroll_up_down>;
+            sensor-bindings = <&vol_up_down>;
             display-name = "NUM";
         };
 
@@ -132,7 +132,7 @@
 &trans    &trans  &trans  &trans  &trans  &trans      &trans  &trans                                           &trans
             >;
 
-            sensor-bindings = <&scroll_up_down>;
+            sensor-bindings = <&space_switch>;
             display-name = "SYM";
         };
 
@@ -175,3 +175,21 @@
 };
 
 &msc { acceleration-exponent = <0>; time-to-max-speed-ms = <0>; delay-ms = <0>; };
+
+/ {
+    behaviors {
+        vol_up_down: vol_up_down {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>;
+            tap-ms = <10>;
+        };
+
+        space_switch: space_switch {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&kp LC(RIGHT)>, <&kp LC(LEFT)>;
+            tap-ms = <10>;
+        };
+    };
+};
